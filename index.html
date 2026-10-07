@@ -26,13 +26,13 @@
             background-image: radial-gradient(#B3E5FC 2px, transparent 2px);
             background-size: 30px 30px;
             margin: 0;
-            padding: 15px;
+            padding: 10px;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            height: 100vh; /* تحديد الارتفاع بـ 100% من الشاشة */
             color: var(--text-dark);
-            overflow-y: auto; 
+            overflow: hidden; /* منع التمرير الخارجي تماماً لضمان احتواء الشاشة */
         }
 
         /* ================= زر الخروج العام ================= */
@@ -68,37 +68,41 @@
             flex-direction: row;
             width: 100%;
             max-width: 1100px;
-            min-height: 85vh;
+            height: 95vh; /* أقصى ارتفاع 95% ليترك هامشاً بسيطاً */
             background: var(--card-bg);
             box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-            border-radius: 25px;
+            border-radius: 20px;
             border: 5px solid #FFFFFF;
             margin: auto;
+            overflow: hidden;
         }
 
         .teacher-side {
             flex: 1;
             background-color: #FFFDE7;
-            padding: 25px;
+            padding: 15px 25px;
             border-left: 4px dashed #FFF59D;
             display: flex;
             flex-direction: column;
+            justify-content: center;
+            overflow-y: auto; /* السماح بالتمرير الداخلي فقط إذا كانت الشاشة صغيرة جداً */
         }
 
         .student-side {
             flex: 1;
             background-color: #E8F5E9;
-            padding: 25px;
+            padding: 15px 25px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            overflow-y: auto;
         }
 
         h2 {
             text-align: center;
-            margin-bottom: 15px;
-            font-size: 26px;
+            margin-bottom: 10px;
+            font-size: 24px;
             font-weight: 900;
         }
         
@@ -108,11 +112,11 @@
         .instructions {
             background-color: #FFF9C4;
             color: #F57F17;
-            padding: 8px 12px;
+            padding: 8px;
             border-radius: 12px;
             font-size: 14px;
             font-weight: 700;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             text-align: center;
             border: 2px solid #FFF59D;
         }
@@ -121,17 +125,17 @@
         .radio-group {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 8px;
-            margin-bottom: 15px;
+            gap: 6px;
+            margin-bottom: 10px;
         }
 
         .radio-label {
             background: #FFFFFF;
             border: 2px solid #FFF59D;
             border-radius: 8px;
-            padding: 8px;
+            padding: 6px;
             text-align: center;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: bold;
             color: #F57F17;
             cursor: pointer;
@@ -151,15 +155,15 @@
         .gen-container {
             display: none; 
             gap: 10px;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         .gen-input {
             flex: 1;
-            padding: 8px 12px;
+            padding: 6px 10px;
             border: 2px solid #E0E0E0;
             border-radius: 10px;
-            font-size: 16px;
+            font-size: 15px;
             outline: none;
             font-family: 'Cairo', sans-serif;
             text-align: center;
@@ -168,12 +172,12 @@
 
         .gen-btn {
             background: linear-gradient(to bottom, #4CAF50, #2E7D32);
-            padding: 8px 20px;
+            padding: 6px 15px;
             border: none;
             border-radius: 10px;
             color: white;
             font-weight: bold;
-            font-size: 16px;
+            font-size: 15px;
             cursor: pointer;
             box-shadow: 0 4px 0 #1B5E20;
         }
@@ -184,12 +188,12 @@
         textarea {
             width: 100%;
             padding: 10px 15px;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             border: 3px solid #E0E0E0;
-            border-radius: 15px;
-            font-size: 24px; 
+            border-radius: 12px;
+            font-size: 20px; 
             font-weight: 900;
-            line-height: 1.5;
+            line-height: 1.4;
             outline: none;
             transition: all 0.3s;
             resize: vertical;
@@ -197,11 +201,11 @@
 
         input[type="text"] {
             width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
+            padding: 10px;
+            margin-bottom: 10px;
             border: 3px solid #E0E0E0;
-            border-radius: 12px;
-            font-size: 18px;
+            border-radius: 10px;
+            font-size: 16px;
             outline: none;
             transition: all 0.3s;
         }
@@ -212,13 +216,13 @@
         input::placeholder, textarea::placeholder {
             color: #BDBDBD;
             font-weight: 400;
-            font-size: 16px;
+            font-size: 15px;
         }
 
         button {
-            padding: 12px 25px;
+            padding: 10px 20px;
             border: none;
-            border-radius: 12px;
+            border-radius: 10px;
             font-size: 18px;
             cursor: pointer;
             font-weight: 900;
@@ -235,65 +239,74 @@
         button:disabled { background: #BDBDBD !important; box-shadow: 0 4px 0 #9E9E9E !important; cursor: not-allowed; transform: none !important; filter: none !important; }
 
         .btn-teacher { background: linear-gradient(to bottom, #FFB74D, var(--primary)); box-shadow: 0 4px 0 #F57C00; width: 100%; }
-        .btn-student { background: linear-gradient(to bottom, #81C784, var(--success)); box-shadow: 0 4px 0 #388E3C; width: 85%; padding: 15px; font-size: 22px; margin-top: 15px; }
+        .btn-student { background: linear-gradient(to bottom, #81C784, var(--success)); box-shadow: 0 4px 0 #388E3C; width: 85%; padding: 12px; font-size: 20px; margin-top: 10px; }
 
-        .confirmation-buttons { display: flex; justify-content: center; gap: 15px; margin-top: 10px; }
-        .btn-yes { background: linear-gradient(to bottom, #81C784, var(--success)); box-shadow: 0 4px 0 #388E3C; min-width: 120px; }
-        .btn-no { background: linear-gradient(to bottom, #E57373, var(--danger)); box-shadow: 0 4px 0 #D32F2F; min-width: 120px; }
+        .confirmation-buttons { display: flex; justify-content: center; gap: 10px; margin-top: 10px; }
+        .btn-yes { background: linear-gradient(to bottom, #81C784, var(--success)); box-shadow: 0 4px 0 #388E3C; min-width: 100px; font-size: 16px;}
+        .btn-no { background: linear-gradient(to bottom, #E57373, var(--danger)); box-shadow: 0 4px 0 #D32F2F; min-width: 100px; font-size: 16px;}
 
         #teacher-confirmation {
             display: none;
             text-align: center;
-            margin-top: 15px;
+            margin-top: 10px;
             background: #E0F2F1;
-            padding: 15px;
-            border-radius: 15px;
+            padding: 10px;
+            border-radius: 10px;
             border: 2px solid #80CBC4;
             animation: fadeIn 0.4s ease-in-out;
         }
 
-        #teacher-msg { font-weight: 900; margin-top: 10px; text-align: center; font-size: 16px; }
-        #student-error { color: var(--danger); font-size: 16px; text-align: center; margin-top: 15px; font-weight: bold; }
+        #teacher-msg { font-weight: 900; margin-top: 5px; text-align: center; font-size: 14px; }
+        #student-error { color: var(--danger); font-size: 14px; text-align: center; margin-top: 10px; font-weight: bold; }
 
         /* ================= الشاشة الثانية (اللعبة) ================= */
         #screen2 {
             display: none;
+            flex-direction: column;
             width: 100%;
             max-width: 1100px;
-            min-height: 85vh;
+            height: 95vh; /* أقصى ارتفاع 95% */
             background: var(--card-bg);
             box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-            border-radius: 25px;
+            border-radius: 20px;
             border: 5px solid var(--secondary);
             margin: auto;
+            overflow: hidden;
         }
 
         .game-header {
             background-color: var(--secondary);
             color: white;
-            padding: 12px 25px;
+            padding: 10px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 900;
-            border-bottom: 5px solid #0288D1;
-            border-radius: 18px 18px 0 0;
+            border-bottom: 4px solid #0288D1;
         }
 
-        .score-badge { background: #FFEB3B; color: #E65100; padding: 4px 20px; border-radius: 20px; box-shadow: 0 4px 0 #FBC02D; font-size: 24px; }
-        .progress-badge { background: rgba(255, 255, 255, 0.2); padding: 5px 20px; border-radius: 20px; border: 2px dashed rgba(255, 255, 255, 0.5); font-size: 22px; }
+        .score-badge { background: #FFEB3B; color: #E65100; padding: 2px 15px; border-radius: 15px; box-shadow: 0 3px 0 #FBC02D; font-size: 20px; }
+        .progress-badge { background: rgba(255, 255, 255, 0.2); padding: 4px 15px; border-radius: 15px; border: 2px dashed rgba(255, 255, 255, 0.5); font-size: 18px; }
 
-        .game-content { padding: 20px; text-align: center; }
+        .game-content { 
+            flex: 1;
+            padding: 10px 20px; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow-y: auto;
+        }
 
-        /* تعديل زر الاستماع */
+        /* زر الاستماع */
         .btn-read {
             background: linear-gradient(to bottom, #29B6F6, #0288D1);
             border: none;
             border-radius: 50%;
-            width: 55px;
-            height: 55px;
-            font-size: 28px;
+            width: 45px;
+            height: 45px;
+            font-size: 24px;
             cursor: pointer;
             box-shadow: 0 4px 0 #0277BD;
             color: white;
@@ -307,28 +320,28 @@
         .btn-read:hover { filter: brightness(1.1); }
 
         .analyzed-word {
-            font-size: 45px; 
+            font-size: 35px; /* تصغير الخط لتوفير المساحة */
             font-weight: 900;
             color: #E65100;
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 10px;
             background-color: #FFF3E0;
-            padding: 15px;
-            border-radius: 20px;
+            padding: 10px 15px;
+            border-radius: 15px;
             border: 3px dashed #FFB74D;
-            margin-bottom: 0; /* تم نقل المسافة للحاوية الأب */
+            margin-bottom: 0;
         }
 
-        .analyzed-word span { background: #ffffff; padding: 0 12px; border-radius: 12px; box-shadow: 0 3px 6px rgba(0,0,0,0.1); }
+        .analyzed-word span { background: #ffffff; padding: 0 8px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
 
         .letters-grid {
             display: flex;
             flex-direction: row;
             justify-content: center;
-            gap: 12px;
-            margin-bottom: 20px;
+            gap: 10px;
+            margin-bottom: 15px;
             flex-wrap: wrap; 
         }
 
@@ -337,54 +350,54 @@
             flex-direction: row;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 6px;
+            gap: 5px;
             background: #F5F5F5;
-            padding: 10px;
-            border-radius: 15px;
+            padding: 8px;
+            border-radius: 12px;
             border: 2px solid #E0E0E0;
             box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
         }
 
         .draggable-letter {
-            font-size: 24px; 
+            font-size: 22px; 
             background-color: #FFFFFF;
             border: 2px solid var(--secondary);
-            padding: 4px 10px;
-            border-radius: 10px;
+            padding: 2px 8px;
+            border-radius: 8px;
             cursor: pointer;
             font-weight: 900;
             color: #01579B;
             user-select: none;
             transition: all 0.2s;
-            box-shadow: 0 4px 0 var(--secondary);
+            box-shadow: 0 3px 0 var(--secondary);
         }
         
-        .draggable-letter:active { transform: translateY(4px); box-shadow: none; }
+        .draggable-letter:active { transform: translateY(3px); box-shadow: none; }
         
         .draggable-letter.selected {
             background-color: #FFEB3B !important;
             border-color: #F57F17 !important;
-            box-shadow: 0 4px 0 #F57F17 !important;
+            box-shadow: 0 3px 0 #F57F17 !important;
             color: #E65100 !important;
             transform: scale(1.1);
         }
 
-        .instruction-text { color: #607D8B; margin-bottom: 12px; font-size: 18px; font-weight: 800; }
+        .instruction-text { color: #607D8B; margin-bottom: 10px; font-size: 16px; font-weight: 800; }
 
         .drop-zone {
             width: 100%;
-            max-width: 700px;
-            min-height: 90px;
-            margin: 0 auto 15px auto;
-            border: 5px dashed var(--secondary);
-            border-radius: 20px;
+            max-width: 600px;
+            min-height: 75px;
+            margin: 0 auto 10px auto;
+            border: 4px dashed var(--secondary);
+            border-radius: 15px;
             background-color: #E1F5FE;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 10px;
             box-sizing: border-box;
-            font-size: 45px;
+            font-size: 35px;
             font-weight: 900;
             color: #004D40;
             line-height: 1.2;
@@ -398,40 +411,59 @@
         .drop-zone span { pointer-events: auto; cursor: pointer; transition: color 0.2s; }
         .drop-zone span:hover { color: var(--danger); }
 
-        .game-controls { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
-        .game-controls .btn-clear { background: linear-gradient(to bottom, #E57373, var(--danger)); box-shadow: 0 4px 0 #D32F2F; }
-        .game-controls .btn-done { background: linear-gradient(to bottom, #81C784, var(--success)); box-shadow: 0 4px 0 #388E3C; padding: 12px 40px; }
+        .game-controls { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        .game-controls .btn-clear { background: linear-gradient(to bottom, #E57373, var(--danger)); box-shadow: 0 4px 0 #D32F2F; font-size: 16px; padding: 10px 20px;}
+        .game-controls .btn-done { background: linear-gradient(to bottom, #81C784, var(--success)); box-shadow: 0 4px 0 #388E3C; padding: 10px 40px; font-size: 16px;}
 
-        .result-msg { margin-top: 10px; font-size: 22px; font-weight: 900; height: 30px; }
+        .result-msg { margin-top: 10px; font-size: 20px; font-weight: 900; height: 30px; }
 
         /* ================= الشاشة الثالثة (التهنئة) ================= */
         #screen3 {
             display: none;
+            flex-direction: column;
             width: 100%;
             max-width: 900px;
-            min-height: 60vh;
+            height: 95vh; /* أقصى ارتفاع */
             background: var(--card-bg);
             box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-            border-radius: 30px;
+            border-radius: 25px;
             border: 6px solid #FFEB3B;
             margin: auto;
             text-align: center;
-            padding: 40px 20px;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
             animation: bounceIn 0.8s ease;
         }
 
-        .congratulations-title { font-size: 45px; color: #E65100; font-weight: 900; margin-bottom: 20px; }
-        .congratulations-text { font-size: 28px; color: #2E7D32; font-weight: 700; margin-bottom: 30px; line-height: 1.6; }
-        .final-score { font-size: 50px; color: var(--secondary); font-weight: 900; background: #E1F5FE; padding: 15px 40px; border-radius: 20px; display: inline-block; border: 4px dashed var(--secondary); margin-bottom: 30px; }
+        .congratulations-title { font-size: 40px; color: #E65100; font-weight: 900; margin-bottom: 15px; }
+        .congratulations-text { font-size: 24px; color: #2E7D32; font-weight: 700; margin-bottom: 25px; line-height: 1.6; }
+        .final-score { font-size: 45px; color: var(--secondary); font-weight: 900; background: #E1F5FE; padding: 10px 35px; border-radius: 20px; display: inline-block; border: 4px dashed var(--secondary); margin-bottom: 25px; }
 
-        .btn-play-again { background: linear-gradient(to bottom, #9C27B0, #7B1FA2); box-shadow: 0 6px 0 #4A148C; padding: 15px 40px; font-size: 24px; color: white; }
+        .btn-play-again { background: linear-gradient(to bottom, #9C27B0, #7B1FA2); box-shadow: 0 5px 0 #4A148C; padding: 12px 35px; font-size: 22px; color: white; }
         .btn-play-again:hover { filter: brightness(1.15); }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes bounceIn { 0% { transform: scale(0.5); opacity: 0; } 60% { transform: scale(1.05); opacity: 1; } 100% { transform: scale(1); } }
 
+        /* استجابة الشاشات الصغيرة وتصغير المكونات أكثر لضمان عدم التمرير */
+        @media (max-height: 800px) {
+            .analyzed-word { font-size: 28px; padding: 8px; }
+            .drop-zone { min-height: 60px; font-size: 30px; margin-bottom: 8px; padding: 5px; }
+            .game-content { padding: 5px 10px; }
+            .letter-box { padding: 5px; gap: 4px; }
+            .draggable-letter { font-size: 20px; padding: 2px 6px; }
+            h2 { font-size: 22px; margin-bottom: 8px; }
+            .radio-group { margin-bottom: 8px; }
+            textarea { font-size: 20px; padding: 8px;}
+            .btn-teacher, .btn-student { padding: 10px; font-size: 18px; margin-top: 5px; }
+            .game-header { padding: 8px 15px; font-size: 16px; }
+            .score-badge, .progress-badge { font-size: 16px; padding: 2px 10px; }
+            .btn-read { width: 40px; height: 40px; font-size: 20px; }
+        }
+
         @media (max-width: 900px) {
-            #screen1 { flex-direction: column; height: auto; }
+            #screen1 { flex-direction: column; }
             .teacher-side { border-left: none; border-bottom: 4px dashed #FFF59D; }
         }
     </style>
@@ -471,7 +503,7 @@
             </div>
             
             <div id="teacher-confirmation">
-                <p style="font-size: 16px; margin-bottom: 10px; color: #00695C; font-weight: bold;">
+                <p style="font-size: 14px; margin-bottom: 5px; color: #00695C; font-weight: bold;">
                     تم وضع الحركات كاملة على جميع الكلمات.<br>هل الحركات كتبت بشكل صحيح؟
                 </p>
                 <div class="confirmation-buttons">
@@ -490,7 +522,7 @@
             <div id="student-error"></div>
             
             <!-- إضافة حقوق التصميم -->
-            <div style="margin-top: 25px; font-size: 15px; color: #2E7D32; font-weight: 900; background: #C8E6C9; padding: 10px 20px; border-radius: 12px; border: 2px dashed #81C784;">
+            <div style="margin-top: 15px; font-size: 14px; color: #2E7D32; font-weight: 900; background: #C8E6C9; padding: 8px 15px; border-radius: 10px; border: 2px dashed #81C784;">
                 فكرة وتصميم : أ غزي بن مساعد الغزي
             </div>
         </div>
@@ -505,7 +537,7 @@
 
         <div class="game-content">
             <!-- حاوية الكلمة وزر النطق -->
-            <div style="display: flex; justify-content: center; align-items: center; gap: 15px; margin-bottom: 20px; flex-wrap: wrap;">
+            <div style="display: flex; justify-content: center; align-items: center; gap: 15px; margin-bottom: 15px; flex-wrap: wrap;">
                 <button onclick="readCurrentWord()" class="btn-read" title="استمع للكلمة">🔊</button>
                 <div class="analyzed-word" id="analyzed-word"></div>
             </div>
@@ -588,7 +620,7 @@
         }
 
         // ==========================================
-        // دالة التحدث الصوتي (مسترجعة من الكود السابق)
+        // دالة التحدث الصوتي (مسترجعة من الكود الأصلي)
         // ==========================================
         function speakText(text) {
             if ('speechSynthesis' in window) {
@@ -658,6 +690,7 @@
         
         let selectedChar = null;
         let selectedElement = null;
+        let currentWordMistakes = 0; // متتبع الأخطاء لكل كلمة
 
         // ==========================================
         // وظائف اختيار المولد الآلي للكلمات
@@ -691,6 +724,7 @@
             const msgBox = document.getElementById('teacher-msg');
             const textarea = document.getElementById('teacher-words');
 
+            // تعديل الحد الأقصى إلى 50
             if (isNaN(count) || count < 3 || count > 50) {
                 msgBox.innerText = "❌ الرجاء إدخال عدد صحيح بين 3 و 50 كلمة.";
                 msgBox.style.color = "#D32F2F";
@@ -747,6 +781,7 @@
             const msgBox = document.getElementById('teacher-msg');
             const confirmBox = document.getElementById('teacher-confirmation');
 
+            // تعديل الحد الأقصى إلى 50
             if (rawWords.length < 3 || rawWords.length > 50) {
                 msgBox.innerText = "❌ تنبيه: يجب إدخال من 3 إلى 50 كلمة.";
                 msgBox.style.color = "#D32F2F";
@@ -821,7 +856,7 @@
             document.getElementById('student-info-display').innerText = `الاسم: ${name} | الصف: ${sClass}`;
             document.getElementById('total-words-num').innerText = gameWords.length;
             document.getElementById('screen1').style.display = 'none';
-            document.getElementById('screen2').style.display = 'block';
+            document.getElementById('screen2').style.display = 'flex'; // استخدام flex لاحتواء المحتوى
             
             speakText(`أَهْلًا بِكَ يَا بَطَل ${name} فِي الصَّفِ ${sClass}. هَلْ أَنْتَ مُسْتَعِدٌ لِلتَّحَدِّي؟ هَيَّا نَنْطَلِق!`);
             
@@ -867,7 +902,7 @@
 
         function showEndScreen() {
             document.getElementById('screen2').style.display = 'none';
-            document.getElementById('screen3').style.display = 'block';
+            document.getElementById('screen3').style.display = 'flex'; // استخدام flex
             
             const name = document.getElementById('student-name').value.trim();
             document.getElementById('final-message').innerText = `أحسنت صنعاً يا ${name}!\nلقد اجتزت التحدي ببراعة وأثبت أنك بطل في الإملاء.`;
@@ -887,6 +922,9 @@
                 showEndScreen();
                 return;
             }
+
+            // تصفير عداد أخطاء الكلمة الحالية
+            currentWordMistakes = 0;
 
             document.getElementById('current-word-num').innerText = index + 1;
 
@@ -956,6 +994,8 @@
 
             container.appendChild(box);
         }
+
+        // ------------------ آليات التفاعل ------------------ //
 
         function selectLetterForClick(el, char) {
             document.querySelectorAll('.draggable-letter').forEach(div => div.classList.remove('selected'));
@@ -1036,9 +1076,16 @@
 
             if (isCorrect) {
                 playSound('correct');
-                resultMsg.innerText = "⭐ إجابة رائعة! لقد رتبت الحروف بشكلها الصحيح. ⭐";
+                
+                // إضافة نقاط فقط في حال لم يخطئ اللاعب في هذه الكلمة سابقاً
+                if (currentWordMistakes === 0) {
+                    resultMsg.innerText = "⭐ إجابة رائعة! 10 نقاط ⭐";
+                    studentScore += 10;
+                } else {
+                    resultMsg.innerText = "⭐ إجابة صحيحة! (أحسنت التصحيح) ⭐";
+                }
+                
                 resultMsg.style.color = "#2E7D32";
-                studentScore += 10;
                 updateScoreDisplay();
                 
                 document.getElementById('btn-submit-answer').disabled = true;
@@ -1049,7 +1096,8 @@
                 }, 2000);
             } else {
                 playSound('wrong');
-                resultMsg.innerText = "❌ إجابة خاطئة.. تأكد من الترتيب واختيار الشكل المناسب لكل حرف.";
+                currentWordMistakes++; // تسجيل خطأ للكلمة الحالية
+                resultMsg.innerText = "❌ إجابة خاطئة.. أعد الترتيب واختيار الأشكال بشكل صحيح.";
                 resultMsg.style.color = "#D32F2F";
             }
         }
